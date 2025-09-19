@@ -1,0 +1,115 @@
+{
+  "name": "chat-echo",
+  "displayName": "Chat Echo - 操作记录器",
+  "description": "记录用户在编辑器中的操作和AI对话内容到本地文件",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "chatEcho.startRecording",
+        "title": "开始记录操作",
+        "category": "Chat Echo"
+      },
+      {
+        "command": "chatEcho.stopRecording",
+        "title": "停止记录操作",
+        "category": "Chat Echo"
+      },
+      {
+        "command": "chatEcho.viewLogs",
+        "title": "查看操作日志",
+        "category": "Chat Echo"
+      },
+      {
+        "command": "chatEcho.clearLogs",
+        "title": "清空操作日志",
+        "category": "Chat Echo"
+      }
+    ],
+    "configuration": {
+      "title": "Chat Echo",
+      "properties": {
+        "chatEcho.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用/禁用操作记录功能"
+        },
+        "chatEcho.logPath": {
+          "type": "string",
+          "default": "",
+          "description": "日志文件保存路径（留空使用默认路径）"
+        },
+        "chatEcho.recordCursorMovement": {
+          "type": "boolean",
+          "default": true,
+          "description": "记录光标移动"
+        },
+        "chatEcho.recordFileOperations": {
+          "type": "boolean",
+          "default": true,
+          "description": "记录文件操作"
+        },
+        "chatEcho.recordAIChat": {
+          "type": "boolean",
+          "default": true,
+          "description": "记录AI对话内容"
+        },
+        "chatEcho.maxLogFileSize": {
+          "type": "number",
+          "default": 10,
+          "description": "最大日志文件大小（MB）"
+        }
+      }
+    },
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "chatEcho.startRecording"
+        },
+        {
+          "command": "chatEcho.stopRecording"
+        },
+        {
+          "command": "chatEcho.viewLogs"
+        },
+        {
+          "command": "chatEcho.clearLogs"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^8.28.0",
+    "mocha": "^11.7.2",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.0"
+  }
+}

@@ -111,5 +111,19 @@
   },
   "dependencies": {
     "fs-extra": "^11.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/chat-echo.git"
+  },
+  "publisher": "your-publisher-name",
+  "license": "MIT",
+  "keywords": [
+    "vscode",
+    "extension",
+    "logging",
+    "ai",
+    "cursor",
+    "tracking"
+  ]
 }
